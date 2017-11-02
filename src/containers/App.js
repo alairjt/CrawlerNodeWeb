@@ -23,50 +23,42 @@ const muiTheme = getMuiTheme({
 
 class App extends Component {
   static propTypes = {
-    selectedReddit: PropTypes.string.isRequired,
-    posts: PropTypes.array.isRequired,
+    deputies: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
     lastUpdated: PropTypes.number,
     dispatch: PropTypes.func.isRequired
   }
 
   componentDidMount() {
-    const { dispatch, selectedReddit } = this.props
-    dispatch(fetchDeputiesIfNeeded(selectedReddit))
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.selectedReddit !== this.props.selectedReddit) {
-      const { dispatch, selectedReddit } = nextProps
-      dispatch(fetchDeputiesIfNeeded(selectedReddit))
-    }
+    const { dispatch } = this.props
+    dispatch(fetchDeputiesIfNeeded())
   }
 
   render() {
-    const { posts } = this.props;
+    const { deputies } = this.props;
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <AppContent data={posts} />
+        <AppContent data={deputies} />
       </MuiThemeProvider>
     )
   }
 }
 
 const mapStateToProps = state => {
-  const { selectedReddit, postsByReddit } = state
+  const { deputiesReducer } = state;
+
   const {
     isFetching,
     lastUpdated,
-    items: posts
-  } = postsByReddit[selectedReddit] || {
+    items: deputies
+  } = deputiesReducer.data || {
       isFetching: true,
       items: []
-    }
+    };
 
   return {
-    selectedReddit,
-    posts,
+    deputies,
     isFetching,
     lastUpdated
   }

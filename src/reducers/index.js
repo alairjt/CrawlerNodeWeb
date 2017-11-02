@@ -1,35 +1,24 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 import {
-  SELECT_REDDIT, REQUEST_DEPUTIES, RECEIVE_DEPUTIES
-} from '../actions'
+  REQUEST_DEPUTIES, RECEIVE_DEPUTIES
+} from '../actions';
 
-const selectedReddit = (state = 'reactjs', action) => {
-  switch (action.type) {
-    case SELECT_REDDIT:
-      return action.reddit
-    default:
-      return state
-  }
-}
-
-const posts = (state = {
+const deputies = (action, state = {
   isFetching: false,
   didInvalidate: false,
   items: []
-}, action) => {
+}) => {
   switch (action.type) {
     case REQUEST_DEPUTIES:
       return {
-        ...state,
         isFetching: true,
         didInvalidate: false
       }
     case RECEIVE_DEPUTIES:
       return {
-        ...state,
         isFetching: false,
         didInvalidate: false,
-        items: action.posts,
+        items: action.deputies,
         lastUpdated: action.receivedAt
       }
     default:
@@ -37,22 +26,22 @@ const posts = (state = {
   }
 }
 
-const postsByReddit = (state = {}, action) => {
+const deputiesReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_DEPUTIES:
-    case REQUEST_DEPUTIES:
-      return {
+      let a = {
         ...state,
-        [action.reddit]: posts(state[action.reddit], action)
-      }
+        data: deputies(action)
+      };
+
+      return a;
     default:
       return state
   }
 }
 
 const rootReducer = combineReducers({
-  postsByReddit,
-  selectedReddit
+  deputiesReducer
 })
 
 export default rootReducer

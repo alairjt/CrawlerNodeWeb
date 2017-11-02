@@ -26,6 +26,7 @@ export default class TableExampleComplex extends Component {
     }
 
     render(a) {
+        let tableData = this.props.data || [];
         return (
             <div>
                 <Table height={this.state.height} onRowSelection={this.rowClick}>
@@ -46,7 +47,7 @@ export default class TableExampleComplex extends Component {
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false}>
-                        {this.props.data.map(row => (
+                        {tableData.map(row => (
                             <TableRow key={row._id}>
                                 <TableRowColumn tooltip={row.id}>{row.id}</TableRowColumn>
                                 <TableRowColumn tooltip={row.name}>{row.name}</TableRowColumn>
