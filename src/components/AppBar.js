@@ -9,7 +9,6 @@ const AppBarIcon = () => (
   <AppBar
     title="Crawler Node Web"
     showMenuIconButton={false}
-    iconClassNameRight="muidocs-icon-navigation-expand-more"
   />
 );
 

@@ -9,64 +9,36 @@ import {
 } from 'material-ui/Table';
 
 
-const tableData = [
-    {
-        name: 'John Smith',
-        status: 'Employed',
-    },
-    {
-        name: 'Randal White',
-        status: 'Unemployed',
-    },
-    {
-        name: 'Stephanie Sanders',
-        status: 'Employed',
-    },
-    {
-        name: 'Steve Brown',
-        status: 'Employed',
-    },
-    {
-        name: 'Joyce Whitten',
-        status: 'Employed',
-    },
-    {
-        name: 'Samuel Roberts',
-        status: 'Employed',
-    },
-    {
-        name: 'Adam Moore',
-        status: 'Employed',
-    },
-];
-
 /**
  * A more complex example, allowing the table height to be set, and key boolean properties to be toggled.
  */
 export default class TableExampleComplex extends Component {
-    state = {
-        height: '500px',
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            height: '500px'
+        };
+    }
 
     rowClick(a, b) {
         console.log('send to deputy edition');
     }
 
-    render() {
+    render(a) {
         return (
             <div>
                 <Table height={this.state.height} onRowSelection={this.rowClick}>
-                    <TableHeader displaySelectAll={false} 
-                    adjustForCheckbox={false}>
+                    <TableHeader displaySelectAll={false}
+                        adjustForCheckbox={false}>
                         <TableRow>
-                            <TableHeaderColumn colSpan="7" tooltip="Super Header" style={{ textAlign: 'center' }}>
+                            <TableHeaderColumn colSpan="6" style={{ textAlign: 'center' }}>
                                 Federal Deputies List
                             </TableHeaderColumn>
                         </TableRow>
                         <TableRow>
                             <TableHeaderColumn tooltip="The ID">ID</TableHeaderColumn>
                             <TableHeaderColumn tooltip="The Name">Name</TableHeaderColumn>
-                            <TableHeaderColumn tooltip="The Fullname">Fullname</TableHeaderColumn>
                             <TableHeaderColumn tooltip="The Birthday">Birthday</TableHeaderColumn>
                             <TableHeaderColumn tooltip="The Phone">Phone</TableHeaderColumn>
                             <TableHeaderColumn tooltip="The Party">Party</TableHeaderColumn>
@@ -74,15 +46,14 @@ export default class TableExampleComplex extends Component {
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false}>
-                        {tableData.map((row, index) => (
-                            <TableRow key={index}>
-                                <TableRowColumn>{index}</TableRowColumn>
-                                <TableRowColumn>{row.name}</TableRowColumn>
-                                <TableRowColumn>{row.status}</TableRowColumn>
-                                <TableRowColumn>{row.status}</TableRowColumn>
-                                <TableRowColumn>{row.status}</TableRowColumn>
-                                <TableRowColumn>{row.status}</TableRowColumn>
-                                <TableRowColumn>{row.status}</TableRowColumn>
+                        {this.props.data.map(row => (
+                            <TableRow key={row._id}>
+                                <TableRowColumn tooltip={row.id}>{row.id}</TableRowColumn>
+                                <TableRowColumn tooltip={row.name}>{row.name}</TableRowColumn>
+                                <TableRowColumn>{row.birthday}</TableRowColumn>
+                                <TableRowColumn>{row.phone}</TableRowColumn>
+                                <TableRowColumn>{row.postalCode}</TableRowColumn>
+                                <TableRowColumn>{row.state}</TableRowColumn>
                             </TableRow>
                         ))}
                     </TableBody>
