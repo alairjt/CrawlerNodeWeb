@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { fetchDeputiesIfNeeded } from '../actions'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppContent from '../components/AppContent';
+import Home from './Home';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { orange500, orange800 } from 'material-ui/styles/colors';
 
@@ -22,46 +19,14 @@ const muiTheme = getMuiTheme({
 
 
 class App extends Component {
-  static propTypes = {
-    deputies: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    lastUpdated: PropTypes.number,
-    dispatch: PropTypes.func.isRequired
-  }
-
-  componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(fetchDeputiesIfNeeded())
-  }
-
   render() {
-    const { deputies } = this.props;
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <AppContent data={deputies} />
+        <Home />
       </MuiThemeProvider>
     )
   }
 }
 
-const mapStateToProps = state => {
-  const { deputiesReducer } = state;
-
-  const {
-    isFetching,
-    lastUpdated,
-    items: deputies
-  } = deputiesReducer.data || {
-      isFetching: true,
-      items: []
-    };
-
-  return {
-    deputies,
-    isFetching,
-    lastUpdated
-  }
-}
-
-export default connect(mapStateToProps)(App)
+export default App

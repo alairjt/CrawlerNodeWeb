@@ -12,7 +12,7 @@ import {
 /**
  * A more complex example, allowing the table height to be set, and key boolean properties to be toggled.
  */
-export default class TableExampleComplex extends Component {
+export default class DeputiesTable extends Component {
     constructor(props) {
         super(props);
 

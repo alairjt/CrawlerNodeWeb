@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import {
-  REQUEST_DEPUTIES, RECEIVE_DEPUTIES
+  REQUEST_DEPUTIES, RECEIVE_DEPUTIES, RECEIVE_DEPUTY
 } from '../actions';
 
 const deputies = (action, state = {
@@ -21,6 +21,13 @@ const deputies = (action, state = {
         items: action.deputies,
         lastUpdated: action.receivedAt
       }
+    case RECEIVE_DEPUTY:
+      return {
+        isFetching: false,
+        didInvalidate: false,
+        deputy: action.deputy,
+        lastUpdated: action.receivedAt
+      }
     default:
       return state
   }
@@ -28,13 +35,12 @@ const deputies = (action, state = {
 
 const deputiesReducer = (state = {}, action) => {
   switch (action.type) {
+    case RECEIVE_DEPUTY:
     case RECEIVE_DEPUTIES:
-      let a = {
+      return {
         ...state,
         data: deputies(action)
       };
-
-      return a;
     default:
       return state
   }
