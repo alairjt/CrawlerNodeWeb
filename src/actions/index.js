@@ -21,7 +21,7 @@ export const receiveDeputy = (json) => ({
 const fetchDeputies = () => dispatch => {
     dispatch(requestDeputies());
 
-    return fetch(`http://localhost:5000/deputies`)
+    return fetch(`http://localhost:5000/api/deputies`)
         .then(response => response.json())
         .then(json => dispatch(receiveDeputies(json)));
 };
@@ -31,7 +31,7 @@ export const fetchDeputiesIfNeeded = () => (dispatch, getState) => {
 };
 
 const fetchDeputyById = (id) => dispatch => {
-    return fetch('http://localhost:5000/deputies/{0}'.replace('{0}', id))
+    return fetch('http://localhost:5000/api/deputies/{0}'.replace('{0}', id))
         .then(response => response.json())
         .then(json => dispatch(receiveDeputy(json)));
 };
