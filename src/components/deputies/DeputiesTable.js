@@ -30,7 +30,6 @@ export default class DeputiesTable extends React.Component {
      * Render table.
      */
     render() {
-        console.log(this.props.data, 'table data');
         let tableData = Array.isArray(this.props.data) ? this.props.data : [];
         return (
             <div>
