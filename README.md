@@ -8,6 +8,7 @@ Client of CrawlerNodeAPI
 ## How to run the sample?
 
 #### Run from source using the following commands:
+- `npm install -g testcafe`
 - `npm install`
 - `npm start`
 
