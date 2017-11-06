@@ -1,7 +1,7 @@
 import { Selector } from 'testcafe';
 
 fixture`Crawler WEB`
-    .page`http://localhost:3001`;
+    .page`http://localhost:3000`;
 
 test('Should be load deputies from API', async t => {
     // Test code
