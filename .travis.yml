@@ -8,6 +8,7 @@ install:
 script:
   # - npm test
   # - codecov --token=$CODECOV_TOKEN
+  # - npm run test-e2e
   - npm start
 notifications:
   email:
