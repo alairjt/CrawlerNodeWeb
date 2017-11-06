@@ -6,10 +6,10 @@ install:
   - npm install -g nodemon codecov
   - npm install
 script:
+  # - npm start
   # - npm test
   # - codecov --token=$CODECOV_TOKEN
   # - npm run test-e2e
-  - npm start
 notifications:
   email:
     on_success: never
