@@ -13,6 +13,11 @@ import {
  * A more complex example, allowing the table height to be set, and key boolean properties to be toggled.
  */
 export default class DeputiesTable extends React.Component {
+
+    /**
+     * @constructor
+     * @param {*} props Properties 
+     */
     constructor(props) {
         super(props);
 
@@ -21,7 +26,10 @@ export default class DeputiesTable extends React.Component {
         };
     }
 
-    render(a) {
+    /**
+     * Render table.
+     */
+    render() {
         let tableData = this.props.data || [];
         return (
             <div>

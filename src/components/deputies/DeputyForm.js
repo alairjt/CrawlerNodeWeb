@@ -4,6 +4,9 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
+/**
+ * Deputy form component.
+ */
 class DeputyForm extends Component {
     static propTypes = {
         deputy: PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class DeputyForm extends Component {
         saving: PropTypes.bool
     }
 
+    /**
+     * Render form.
+     */
     render() {
         const style = {
             margin: 12,

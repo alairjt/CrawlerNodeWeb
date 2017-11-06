@@ -1,4 +1,5 @@
 import deputiesApi from '../api/DeputiesApi';
+
 export const REQUEST_DEPUTIES = 'REQUEST_DEPUTIES';
 export const RECEIVE_DEPUTIES = 'RECEIVE_DEPUTIES';
 export const RECEIVE_DEPUTY = 'RECEIVE_DEPUTY';
@@ -25,6 +26,9 @@ export const receiveDeputy = (json) => ({
     receivedAt: Date.now()
 });
 
+/**
+ * Get all deputies.
+ */
 const fetchDeputies = () => {
     return (dispatch) => {
         dispatch(requestDeputies());
@@ -36,10 +40,17 @@ const fetchDeputies = () => {
     };
 };
 
+/**
+ * Dispatch get all deputies.
+ */
 export const fetchDeputiesIfNeeded = () => (dispatch, getState) => {
     return dispatch(fetchDeputies());
 };
 
+/**
+ * Get deputy by id.
+ * @param {*} id Deputy id
+ */
 const fetchDeputyById = (id) => {
     return (dispatch) => {
         return deputiesApi.getDeputyById(id).then(responseDeputy => {
@@ -50,10 +61,18 @@ const fetchDeputyById = (id) => {
     };
 };
 
+/**
+ * Dispatch get deputy by id.
+ * @param {*} id Deputy id
+ */
 export const fetchDeputyIfNeeded = (id) => (dispatch, getState) => {
     return dispatch(fetchDeputyById(id));
 };
 
+/**
+ * Update a deputy.
+ * @param {*} deputy Deputy 
+ */
 export const updateDeputy = (deputy) => {
     return (dispatch) => {
         return deputiesApi.updateDeputy(deputy).then(responseDeputy => {

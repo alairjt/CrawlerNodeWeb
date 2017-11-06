@@ -17,7 +17,9 @@ const muiTheme = getMuiTheme({
   },
 });
 
-
+/**
+ * Main container.
+ */
 class App extends Component {
   render() {
 

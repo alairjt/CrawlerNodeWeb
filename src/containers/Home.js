@@ -8,7 +8,9 @@ import {
   Route
 } from 'react-router-dom';
 
-
+/**
+ * Home page.
+ */
 const Home = () => (
   <Router>
     <div>

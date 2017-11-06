@@ -1,9 +1,17 @@
+/**
+ * Deputies API Client.
+ */
 class DeputiesApi {
-
+    /**
+     * Get default headers.
+     */
     static requestHeaders() {
         return { 'AUTHORIZATION': `Bearer ${sessionStorage.jwt}` }
     }
 
+    /**
+     * Get all deputies.
+     */
     static getAllDeputies() {
         const headers = this.requestHeaders();
         const request = new Request(`${process.env.REACT_APP_API_HOST}/deputies`, {
@@ -18,6 +26,10 @@ class DeputiesApi {
         });
     }
 
+    /**
+     * Get deputy by id.
+     * @param {*} id Deputy id 
+     */
     static getDeputyById(id) {
         const headers = this.requestHeaders();
         const request = new Request(`${process.env.REACT_APP_API_HOST}/deputies/${id}`, {
@@ -32,6 +44,10 @@ class DeputiesApi {
         });
     }
 
+    /**
+     * Update a deputy by id.
+     * @param {*} deputy Deputy
+     */
     static updateDeputy(deputy) {
         const headers = Object.assign({ 'Content-Type': 'application/json' }, this.requestHeaders());
         const request = new Request(`${process.env.REACT_APP_API_HOST}/deputies/${deputy._id}`, {
@@ -47,6 +63,10 @@ class DeputiesApi {
         });
     }
 
+    /**
+     * Create a deputy.
+     * @param {*} deputy Deputy 
+     */
     static createDeputy(deputy) {
         const headers = Object.assign({ 'Content-Type': 'application/json' }, this.requestHeaders());
         const request = new Request(`${process.env.API_HOST}/deputies`, {
@@ -62,6 +82,10 @@ class DeputiesApi {
         });
     }
 
+    /**
+     * Delete a deputy.
+     * @param {*} deputy Deputy 
+     */
     static deleteDeputy(deputy) {
         const headers = Object.assign({ 'Content-Type': 'application/json' }, this.requestHeaders());
         const request = new Request(`${process.env.API_HOST}/deputies/${deputy._id}`, {
