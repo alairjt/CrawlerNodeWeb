@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     Table,
     TableBody,
@@ -12,7 +12,7 @@ import {
 /**
  * A more complex example, allowing the table height to be set, and key boolean properties to be toggled.
  */
-export default class DeputiesTable extends Component {
+export default class DeputiesTable extends React.Component {
     constructor(props) {
         super(props);
 
@@ -21,15 +21,11 @@ export default class DeputiesTable extends Component {
         };
     }
 
-    rowClick(a, b) {
-        console.log('send to deputy edition');
-    }
-
     render(a) {
         let tableData = this.props.data || [];
         return (
             <div>
-                <Table height={this.state.height} onRowSelection={this.rowClick}>
+                <Table height={this.state.height} onRowSelection={this.props.rowClick}>
                     <TableHeader displaySelectAll={false}
                         adjustForCheckbox={false}>
                         <TableRow>

@@ -7,10 +7,14 @@ import DeputiesTable from './DeputiesTable';
 
 class DeputiesList extends Component {
   static propTypes = {
-    deputies: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired,
     lastUpdated: PropTypes.number,
     dispatch: PropTypes.func.isRequired
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.rowClick = this.rowClick.bind(this);
   }
 
   componentDidMount() {
@@ -18,11 +22,16 @@ class DeputiesList extends Component {
     dispatch(fetchDeputiesIfNeeded())
   }
 
+  rowClick(index) {
+    let selectRow = this.props.deputies[index];
+    this.props.history.push(`/edit/${selectRow._id}`);
+  }
+
   render() {
     const { deputies } = this.props;
 
     return (
-      <DeputiesTable data={deputies}/>
+      <DeputiesTable data={deputies} rowClick={this.rowClick} />
     )
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import AppBarIcon from '../components/AppBar';
 import DeputiesList from '../components/deputies/DeputiesList';
-import DeputiesForm from '../components/deputies/DeputiesForm';
+import DeputyPage from '../components/deputies/DeputyPage';
 
 import {
   BrowserRouter as Router,
@@ -14,7 +14,7 @@ const Home = () => (
     <div>
       <AppBarIcon />
       <Route exact path="/" component={DeputiesList}/>
-      <Route path="/edit/:id" component={DeputiesForm}/>
+      <Route path="/edit/:id" component={DeputyPage}/>
     </div>
   </Router>
 );
