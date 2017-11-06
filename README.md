@@ -12,8 +12,8 @@ Client of CrawlerNodeAPI
 - `npm install`
 - `npm start`
 
-#### Run tests
-- `npm test`
+#### Run tests e2e 
+- `npm run test-e2e`
 
 #### Generate doc
 - `gulp doc`
