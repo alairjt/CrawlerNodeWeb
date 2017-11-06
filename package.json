@@ -20,11 +20,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test-e2e": "testcafe all test-e2e/*.js --app \"npm start\" --app-init-delay 10000"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-jsdoc3": "^1.0.1",
+    "nock": "^9.0.28",
     "redux-devtools": "^3.4.0"
   }
 }

@@ -112,6 +112,7 @@ class DeputyPage extends Component {
                 </GridList>
 
                 <Snackbar
+                    id="snackBar"
                     open={this.props.updateSuccess}
                     message="Deputy was saved succesfully."
                     action="Back"
